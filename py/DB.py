@@ -627,7 +627,7 @@ class DB:
 
 if __name__ == '__main__':
 	db = DB()
-	try: db.add_user('4_pr0n')
+	try: db.add_user('gingerpuss') # An oldie but a goodie!
 	except: pass
-	db.set_last_since_id('4_pr0n', 'ccs4ule')
-	print db.get_last_since_id('4_pr0n')
+	db.set_last_since_id('gingerpuss', 'o7amn')
+	print db.get_last_since_id('gingerpuss')
