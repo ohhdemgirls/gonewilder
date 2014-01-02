@@ -231,7 +231,7 @@ class Gonewild(object):
 			last_index += 1
 			if last_index >= len(users):
 				last_index = 0
-				self.add_top_users() # Add users from /top
+			self.add_top_users() # Add users from /new (check for new posts after every user)
 
 			user = users[last_index]
 			try:
@@ -241,10 +241,10 @@ class Gonewild(object):
 				self.debug('ininite_loop: poll_user: %s' % str(e))
 	
 	def add_top_users(self):
-		subs = ['gonewild']
-		self.debug('add_top_users: loading top posts for the week from %s' % ','.join(subs))
+		subs = ['gonewild'] # ['gonewildcurvy', 'gonemild', 'asstastic']
+		self.debug('add_top_users: loading new users from %s' % ','.join(subs))
 		try:
-			posts = self.reddit.get('http://www.reddit.com/r/%s/top.json?t=week' % '+'.join(subs))
+			posts = self.reddit.get('http://www.reddit.com/r/%s/new.json?limit=100' % '+'.join(subs))
 		except Exception, e:
 			self.debug('add_top_users: Exception: %s' % str(e))
 			return
